@@ -1,0 +1,23 @@
+{
+  "name": "iot-lab-bridge",
+  "version": "1.0.0",
+  "description": "IoT Lab Local Hardware Bridge Agent for WebSocket & Serial communication with physical ESP32 devices",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "tsx --test tests/**/*.test.ts"
+  },
+  "keywords": ["iot", "esp32", "websocket", "serial", "hardware-bridge"],
+  "author": "IoT Lab Team",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/ws": "^8.5.13",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@xyflow/react/dist/style.css";
+
+@layer base {
+  :root {
+    --bg-workspace: #f8fafc;
+    --card-surface: #ffffff;
+    --border-subtle: #e2e8f0;
+    --navy-sidebar: #0b1329;
+    --accent-blue: #2563eb;
+    --accent-green: #10b981;
+  }
+
+  body {
+    background-color: var(--bg-workspace);
+    color: #0f172a;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom Scrollbar for Engineering UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Sidebar Scrollbar */
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

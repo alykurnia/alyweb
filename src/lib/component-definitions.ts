@@ -1,0 +1,616 @@
+import { ComponentDefinition } from '@/types/circuit';
+
+export const COMPONENT_DEFINITIONS: Record<string, ComponentDefinition> = {
+  // ==========================================
+  // MICROCONTROLLERS
+  // ==========================================
+  'esp32-devkit': {
+    typeId: 'esp32-devkit',
+    name: 'ESP32 DevKit V1',
+    category: 'microcontroller',
+    nodeType: 'esp32Node',
+    description: 'Dual-core Xtensa 32-bit MCU with integrated Wi-Fi, Bluetooth 4.2 BLE, and 30 pin headers.',
+    dimensions: { width: 230, height: 440 },
+    voltage: '3.3V',
+    iconName: 'Cpu',
+    defaultProperties: {
+      boardName: 'ESP32 DevKit V1',
+      cpuFrequency: '240 MHz',
+      flashSize: '4 MB',
+      firmwareLanguage: 'C++ (Arduino)',
+      wifiStatus: 'Enabled',
+      bluetoothStatus: 'BLE Ready',
+    },
+    pins: [
+      // Left Pin Header
+      { id: 'pin-3v3', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'left', description: '3.3V Regulated Power Output' },
+      { id: 'pin-en', name: 'EN', type: 'gpio_digital', voltage: '3.3V', direction: 'input', position: 'left', description: 'Chip Enable / Reset' },
+      { id: 'pin-vp', name: 'VP/36', type: 'gpio_analog', voltage: '3.3V', direction: 'input', position: 'left', description: 'ADC1_CH0 (Input only)' },
+      { id: 'pin-vn', name: 'VN/39', type: 'gpio_analog', voltage: '3.3V', direction: 'input', position: 'left', description: 'ADC1_CH3 (Input only)' },
+      { id: 'pin-d34', name: 'D34', type: 'gpio_analog', voltage: '3.3V', direction: 'input', position: 'left', description: 'ADC1_CH6 (Input only)' },
+      { id: 'pin-d35', name: 'D35', type: 'gpio_analog', voltage: '3.3V', direction: 'input', position: 'left', description: 'ADC1_CH7 (Input only)' },
+      { id: 'pin-d32', name: 'D32', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'ADC1_CH4, Touch 9, GPIO32' },
+      { id: 'pin-d33', name: 'D33', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'ADC1_CH5, Touch 8, GPIO33' },
+      { id: 'pin-d25', name: 'D25', type: 'gpio_analog', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'DAC1, ADC2_CH8, GPIO25' },
+      { id: 'pin-d26', name: 'D26', type: 'gpio_analog', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'DAC2, ADC2_CH9, GPIO26' },
+      { id: 'pin-d27', name: 'D27', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'Touch 7, ADC2_CH7, GPIO27' },
+      { id: 'pin-d14', name: 'D14', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'HSPI_CLK, Touch 6, GPIO14' },
+      { id: 'pin-d12', name: 'D12', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'HSPI_MISO, Touch 5, GPIO12' },
+      { id: 'pin-gnd-1', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'left', description: 'Ground' },
+      { id: 'pin-vin', name: 'VIN', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'left', description: '5V Power Supply Input' },
+
+      // Right Pin Header
+      { id: 'pin-d23', name: 'D23', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'VSPI_MOSI, GPIO23' },
+      { id: 'pin-d22', name: 'D22', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'I2C_SCL, GPIO22' },
+      { id: 'pin-tx0', name: 'TX0', type: 'comm_uart', voltage: '3.3V', direction: 'output', position: 'right', description: 'UART0_TXD, GPIO1' },
+      { id: 'pin-rx0', name: 'RX0', type: 'comm_uart', voltage: '3.3V', direction: 'input', position: 'right', description: 'UART0_RXD, GPIO3' },
+      { id: 'pin-d21', name: 'D21', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'I2C_SDA, GPIO21' },
+      { id: 'pin-d19', name: 'D19', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'VSPI_MISO, GPIO19' },
+      { id: 'pin-d18', name: 'D18', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'VSPI_CLK, GPIO18' },
+      { id: 'pin-d5', name: 'D5', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'VSPI_CS, GPIO5' },
+      { id: 'pin-d17', name: 'D17', type: 'comm_uart', voltage: '3.3V', direction: 'output', position: 'right', description: 'UART2_TXD, GPIO17' },
+      { id: 'pin-d16', name: 'D16', type: 'comm_uart', voltage: '3.3V', direction: 'input', position: 'right', description: 'UART2_RXD, GPIO16' },
+      { id: 'pin-d4', name: 'D4', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'Touch 0, ADC2_CH0, GPIO4' },
+      { id: 'pin-d0', name: 'D0', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'Boot Strapping, GPIO0' },
+      { id: 'pin-d2', name: 'D2', type: 'gpio_pwm', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'On-board Blue LED, GPIO2' },
+      { id: 'pin-d15', name: 'D15', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'HSPI_CS, Touch 3, GPIO15' },
+      { id: 'pin-gnd-2', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'right', description: 'Ground' },
+    ],
+  },
+
+  'arduino-uno': {
+    typeId: 'arduino-uno',
+    name: 'Arduino Uno R3',
+    category: 'microcontroller',
+    nodeType: 'arduinoNode',
+    description: 'ATmega328P 8-bit AVR microcontroller with 14 digital I/O pins and 6 analog inputs.',
+    dimensions: { width: 280, height: 360 },
+    voltage: '5V',
+    iconName: 'Cpu',
+    defaultProperties: {
+      boardName: 'Arduino Uno R3',
+      clockSpeed: '16 MHz',
+      mcuChip: 'ATmega328P',
+      flashMemory: '32 KB',
+      sram: '2 KB',
+      eeprom: '1 KB',
+    },
+    pins: [
+      // Top Header: Digital & Comm
+      { id: 'pin-aref', name: 'AREF', type: 'gpio_analog', voltage: '5V', direction: 'input', position: 'top', description: 'Analog Reference' },
+      { id: 'pin-gnd-top', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'top', description: 'Ground' },
+      { id: 'pin-d13', name: 'D13', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'SCK / Built-in LED' },
+      { id: 'pin-d12', name: 'D12', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'MISO' },
+      { id: 'pin-d11', name: '~D11', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'MOSI / PWM' },
+      { id: 'pin-d10', name: '~D10', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'SS / PWM' },
+      { id: 'pin-d9', name: '~D9', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'PWM' },
+      { id: 'pin-d8', name: 'D8', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'Digital I/O 8' },
+      { id: 'pin-d7', name: 'D7', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'Digital I/O 7' },
+      { id: 'pin-d6', name: '~D6', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'PWM' },
+      { id: 'pin-d5', name: '~D5', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'PWM' },
+      { id: 'pin-d4', name: 'D4', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'Digital I/O 4' },
+      { id: 'pin-d3', name: '~D3', type: 'gpio_pwm', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'INT1 / PWM' },
+      { id: 'pin-d2', name: 'D2', type: 'gpio_digital', voltage: '5V', direction: 'bidirectional', position: 'top', description: 'INT0' },
+      { id: 'pin-d1', name: 'TX>1', type: 'comm_uart', voltage: '5V', direction: 'output', position: 'top', description: 'UART TX' },
+      { id: 'pin-d0', name: 'RX<0', type: 'comm_uart', voltage: '5V', direction: 'input', position: 'top', description: 'UART RX' },
+
+      // Bottom Header: Power & Analog
+      { id: 'pin-ioref', name: 'IOREF', type: 'power_vcc', voltage: '5V', direction: 'output', position: 'bottom', description: 'I/O Reference Voltage' },
+      { id: 'pin-reset', name: 'RESET', type: 'gpio_digital', voltage: '5V', direction: 'input', position: 'bottom', description: 'Active-low Reset' },
+      { id: 'pin-3v3', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'bottom', description: '3.3V Power Output (50mA)' },
+      { id: 'pin-5v', name: '5V', type: 'power_vcc', voltage: '5V', direction: 'output', position: 'bottom', description: '5V Regulated Power Output' },
+      { id: 'pin-gnd-bot1', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-gnd-bot2', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-vin', name: 'VIN', type: 'power_vcc', voltage: 'VARIABLE', direction: 'input', position: 'bottom', description: '7-12V Input' },
+      { id: 'pin-a0', name: 'A0', type: 'gpio_analog', voltage: '5V', direction: 'input', position: 'bottom', description: 'Analog Input 0' },
+      { id: 'pin-a1', name: 'A1', type: 'gpio_analog', voltage: '5V', direction: 'input', position: 'bottom', description: 'Analog Input 1' },
+      { id: 'pin-a2', name: 'A2', type: 'gpio_analog', voltage: '5V', direction: 'input', position: 'bottom', description: 'Analog Input 2' },
+      { id: 'pin-a3', name: 'A3', type: 'gpio_analog', voltage: '5V', direction: 'input', position: 'bottom', description: 'Analog Input 3' },
+      { id: 'pin-a4', name: 'A4/SDA', type: 'comm_i2c', voltage: '5V', direction: 'bidirectional', position: 'bottom', description: 'Analog 4 / I2C SDA' },
+      { id: 'pin-a5', name: 'A5/SCL', type: 'comm_i2c', voltage: '5V', direction: 'bidirectional', position: 'bottom', description: 'Analog 5 / I2C SCL' },
+    ],
+  },
+
+  'esp8266-nodemcu': {
+    typeId: 'esp8266-nodemcu',
+    name: 'ESP8266 NodeMCU',
+    category: 'microcontroller',
+    nodeType: 'esp32Node',
+    description: 'Wi-Fi enabled IoT SoC based on Tensilica L106 32-bit core with USB-UART bridge.',
+    dimensions: { width: 220, height: 380 },
+    voltage: '3.3V',
+    iconName: 'Cpu',
+    defaultProperties: {
+      boardName: 'ESP8266 NodeMCU v2',
+      clockSpeed: '80 MHz',
+      flashSize: '4 MB',
+      wifiProtocol: '802.11 b/g/n',
+    },
+    pins: [
+      { id: 'pin-d0', name: 'D0/16', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO16 / WAKE' },
+      { id: 'pin-d1', name: 'D1/5', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO5 / SCL' },
+      { id: 'pin-d2', name: 'D2/4', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO4 / SDA' },
+      { id: 'pin-d3', name: 'D3/0', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO0 / FLASH' },
+      { id: 'pin-d4', name: 'D4/2', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO2 / TX1' },
+      { id: 'pin-3v3-left', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'left', description: '3.3V Power' },
+      { id: 'pin-gnd-left', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'left', description: 'Ground' },
+      { id: 'pin-d5', name: 'D5/14', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO14 / SCLK' },
+      { id: 'pin-d6', name: 'D6/12', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO12 / MISO' },
+      { id: 'pin-d7', name: 'D7/13', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO13 / MOSI' },
+      { id: 'pin-d8', name: 'D8/15', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'left', description: 'GPIO15 / CS' },
+      { id: 'pin-rx', name: 'RX/3', type: 'comm_uart', voltage: '3.3V', direction: 'input', position: 'left', description: 'GPIO3 / RX0' },
+      { id: 'pin-tx', name: 'TX/1', type: 'comm_uart', voltage: '3.3V', direction: 'output', position: 'left', description: 'GPIO1 / TX0' },
+      { id: 'pin-gnd-left2', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'left', description: 'Ground' },
+      { id: 'pin-3v3-left2', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'left', description: '3.3V Power' },
+
+      // Right Header
+      { id: 'pin-a0', name: 'A0/ADC', type: 'gpio_analog', voltage: '3.3V', direction: 'input', position: 'right', description: 'ADC0 (0-1.0V max raw)' },
+      { id: 'pin-rsv1', name: 'RSV', type: 'passive', voltage: 'VARIABLE', direction: 'bidirectional', position: 'right', description: 'Reserved' },
+      { id: 'pin-rsv2', name: 'RSV', type: 'passive', voltage: 'VARIABLE', direction: 'bidirectional', position: 'right', description: 'Reserved' },
+      { id: 'pin-sd3', name: 'SD3/10', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'GPIO10' },
+      { id: 'pin-sd2', name: 'SD2/9', type: 'gpio_digital', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'GPIO9' },
+      { id: 'pin-sd1', name: 'SD1/MOSI', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'SPI MOSI' },
+      { id: 'pin-cmd', name: 'CMD/CS', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'SPI CS' },
+      { id: 'pin-sd0', name: 'SD0/MISO', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'SPI MISO' },
+      { id: 'pin-clk', name: 'CLK/SCLK', type: 'comm_spi', voltage: '3.3V', direction: 'bidirectional', position: 'right', description: 'SPI CLK' },
+      { id: 'pin-gnd-r', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'right', description: 'Ground' },
+      { id: 'pin-3v3-r', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'right', description: '3.3V Power' },
+      { id: 'pin-en', name: 'EN', type: 'gpio_digital', voltage: '3.3V', direction: 'input', position: 'right', description: 'Chip Enable' },
+      { id: 'pin-rst', name: 'RST', type: 'gpio_digital', voltage: '3.3V', direction: 'input', position: 'right', description: 'Active-low Reset' },
+      { id: 'pin-gnd-r2', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'right', description: 'Ground' },
+      { id: 'pin-vin', name: 'VIN', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'right', description: '5V Power In' },
+    ],
+  },
+
+  // ==========================================
+  // SENSORS
+  // ==========================================
+  'dht22': {
+    typeId: 'dht22',
+    name: 'DHT22 / AM2302 Sensor',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'High precision digital temperature (-40 to 80°C) and relative humidity (0 to 100%) sensor with 1-wire communication.',
+    dimensions: { width: 170, height: 160 },
+    voltage: '3.3V - 5V',
+    iconName: 'Thermometer',
+    defaultProperties: {
+      sensorType: 'DHT22 (AM2302)',
+      sampleInterval: '2000 ms',
+      tempAccuracy: '±0.5°C',
+      humidityAccuracy: '±2% RH',
+      simulatedTemp: 24.5,
+      simulatedHumidity: 58,
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: '3.3V to 5V Power Supply' },
+      { id: 'pin-data', name: 'DATA', type: 'comm_onewire', voltage: '3.3V', direction: 'output', position: 'bottom', description: '1-Wire Digital Signal (requires 10k pull-up)' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'hc-sr04': {
+    typeId: 'hc-sr04',
+    name: 'HC-SR04 Ultrasonic Sensor',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'Non-contact sonar ranging module providing 2cm to 400cm measurement with 3mm accuracy.',
+    dimensions: { width: 190, height: 160 },
+    voltage: '5V',
+    iconName: 'Activity',
+    defaultProperties: {
+      sensorType: 'Ultrasonic Sonar',
+      maxRange: '400 cm',
+      minRange: '2 cm',
+      operatingFreq: '40 kHz',
+      simulatedDistance: 45,
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'bottom', description: '5V Power Supply' },
+      { id: 'pin-trig', name: 'TRIG', type: 'gpio_digital', voltage: '5V', direction: 'input', position: 'bottom', description: '10us Trigger Pulse Input' },
+      { id: 'pin-echo', name: 'ECHO', type: 'gpio_digital', voltage: '5V', direction: 'output', position: 'bottom', description: 'Echo Pulse Output Width' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'ds18b20': {
+    typeId: 'ds18b20',
+    name: 'DS18B20 1-Wire Temp Sensor',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'Programmable digital temperature sensor (9-12 bit) with 64-bit unique ROM address.',
+    dimensions: { width: 160, height: 150 },
+    voltage: '3.3V - 5V',
+    iconName: 'Thermometer',
+    defaultProperties: {
+      resolution: '12-bit (0.0625°C)',
+      tempRange: '-55°C to +125°C',
+      conversionTime: '750 ms',
+    },
+    pins: [
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-data', name: 'DATA', type: 'comm_onewire', voltage: '3.3V', direction: 'bidirectional', position: 'bottom', description: '1-Wire Bus Data' },
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'Power (3.0V - 5.5V)' },
+    ],
+  },
+
+  'soil-moisture': {
+    typeId: 'soil-moisture',
+    name: 'Capacitive Soil Moisture',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'Corrosion-resistant capacitive soil humidity probe with analog voltage output.',
+    dimensions: { width: 170, height: 160 },
+    voltage: '3.3V - 5V',
+    iconName: 'Droplets',
+    defaultProperties: {
+      sensorType: 'Capacitive v1.2',
+      dryThreshold: '3000 ADC',
+      wetThreshold: '1200 ADC',
+      simulatedMoisture: '64%',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: '3.3V - 5V Power' },
+      { id: 'pin-aout', name: 'AOUT', type: 'gpio_analog', voltage: '3.3V', direction: 'output', position: 'bottom', description: 'Analog Moisture Voltage' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'mq135': {
+    typeId: 'mq135',
+    name: 'MQ-135 Air Quality Sensor',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'Hazardous gas sensor sensitive to NH3, NOx, alcohol, benzene, smoke, and CO2.',
+    dimensions: { width: 175, height: 165 },
+    voltage: '5V',
+    iconName: 'Wind',
+    defaultProperties: {
+      targetGases: 'NH3, NOx, Alcohol, Benzene, Smoke, CO2',
+      preheatTime: '20 seconds',
+      sensitivity: 'Adjustable via trimmer',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'bottom', description: '5V Heater & Circuit Power' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-dout', name: 'DOUT', type: 'gpio_digital', voltage: '5V', direction: 'output', position: 'bottom', description: 'Digital Threshold Comparator' },
+      { id: 'pin-aout', name: 'AOUT', type: 'gpio_analog', voltage: '5V', direction: 'output', position: 'bottom', description: 'Analog Gas Concentration' },
+    ],
+  },
+
+  'bh1750': {
+    typeId: 'bh1750',
+    name: 'BH1750 Ambient Light Sensor',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: '16-bit digital ambient light sensor (0 to 65535 lx) with calibrated I2C interface.',
+    dimensions: { width: 170, height: 150 },
+    voltage: '3.3V',
+    iconName: 'Sun',
+    defaultProperties: {
+      i2cAddress: '0x23 (ADDR to GND)',
+      range: '1 - 65535 Lux',
+      resolution: '1 Lux',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: '3.3V Power' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-scl', name: 'SCL', type: 'comm_i2c', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'I2C Clock' },
+      { id: 'pin-sda', name: 'SDA', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'bottom', description: 'I2C Data' },
+    ],
+  },
+
+  'bmp280': {
+    typeId: 'bmp280',
+    name: 'BMP280 Barometric Pressure',
+    category: 'sensor',
+    nodeType: 'sensorNode',
+    description: 'Absolute barometric air pressure (300 to 1100 hPa) and ambient temperature with I2C/SPI.',
+    dimensions: { width: 170, height: 150 },
+    voltage: '3.3V',
+    iconName: 'Gauge',
+    defaultProperties: {
+      i2cAddress: '0x76 / 0x77',
+      pressureRange: '300 to 1100 hPa',
+      tempAccuracy: '±1.0°C',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: '3.3V Power' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-scl', name: 'SCL', type: 'comm_i2c', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'I2C Clock' },
+      { id: 'pin-sda', name: 'SDA', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'bottom', description: 'I2C Data' },
+    ],
+  },
+
+  // ==========================================
+  // ACTUATORS
+  // ==========================================
+  'led': {
+    typeId: 'led',
+    name: 'LED (5mm Indicator)',
+    category: 'actuator',
+    nodeType: 'actuatorNode',
+    description: 'Standard 5mm through-hole light emitting diode with forward voltage ~2.0V.',
+    dimensions: { width: 140, height: 140 },
+    voltage: 'VARIABLE',
+    iconName: 'Zap',
+    defaultProperties: {
+      color: 'red', // red, green, blue, yellow, amber
+      forwardVoltage: '2.0V',
+      currentRating: '20 mA',
+      state: 'OFF',
+    },
+    pins: [
+      { id: 'pin-anode', name: 'Anode (+)', type: 'gpio_digital', voltage: 'VARIABLE', direction: 'input', position: 'bottom', description: 'Positive Terminal (Longer Lead)' },
+      { id: 'pin-cathode', name: 'Cathode (-)', type: 'power_gnd', voltage: 'GND', direction: 'output', position: 'bottom', description: 'Negative Terminal (Flat edge)' },
+    ],
+  },
+
+  'relay-module': {
+    typeId: 'relay-module',
+    name: '1-Channel 5V Relay',
+    category: 'actuator',
+    nodeType: 'actuatorNode',
+    description: 'Opto-isolated 5V electromechanical relay for switching high voltage AC/DC appliances (up to 250VAC 10A).',
+    dimensions: { width: 180, height: 170 },
+    voltage: '5V',
+    iconName: 'ToggleLeft',
+    defaultProperties: {
+      triggerType: 'Active LOW',
+      maxCurrentAC: '10A 250VAC',
+      maxCurrentDC: '10A 30VDC',
+      status: 'DE-ENERGIZED',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'bottom', description: '5V Power Supply' },
+      { id: 'pin-in', name: 'IN', type: 'gpio_digital', voltage: '5V', direction: 'input', position: 'bottom', description: 'Trigger Signal Input' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'servo-sg90': {
+    typeId: 'servo-sg90',
+    name: 'SG90 Micro Servo (9g)',
+    category: 'actuator',
+    nodeType: 'actuatorNode',
+    description: 'Compact 9-gram positional servo motor with 180-degree rotation controlled by 50Hz PWM signal.',
+    dimensions: { width: 175, height: 170 },
+    voltage: '4.8V - 6V',
+    iconName: 'RotateCw',
+    defaultProperties: {
+      angle: 90, // 0 - 180
+      torque: '1.8 kg/cm',
+      pwmFrequency: '50 Hz',
+      pulseWidth: '1.0ms - 2.0ms',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC (Red)', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'bottom', description: '5V DC Power' },
+      { id: 'pin-signal', name: 'SIGNAL (Orange)', type: 'gpio_pwm', voltage: '5V', direction: 'input', position: 'bottom', description: '50Hz PWM Control Line' },
+      { id: 'pin-gnd', name: 'GND (Brown)', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'buzzer': {
+    typeId: 'buzzer',
+    name: 'Piezo Buzzer (5V)',
+    category: 'actuator',
+    nodeType: 'actuatorNode',
+    description: 'Active/passive piezo transducer for audible alarms, tones, and melody generation.',
+    dimensions: { width: 140, height: 140 },
+    voltage: '3.3V - 5V',
+    iconName: 'Volume2',
+    defaultProperties: {
+      type: 'Active 5V',
+      frequency: '2.4 kHz',
+      soundLevel: '85 dB',
+    },
+    pins: [
+      { id: 'pin-pos', name: 'Positive (+)', type: 'gpio_pwm', voltage: '5V', direction: 'input', position: 'bottom', description: 'VCC / PWM Signal' },
+      { id: 'pin-neg', name: 'Negative (-)', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  // ==========================================
+  // DISPLAYS
+  // ==========================================
+  'lcd-16x2-i2c': {
+    typeId: 'lcd-16x2-i2c',
+    name: 'LCD 16x2 (I2C PCF8574)',
+    category: 'display',
+    nodeType: 'displayNode',
+    description: '16 columns x 2 rows alphanumeric character LCD with PCF8574 I2C backpack interface.',
+    dimensions: { width: 260, height: 170 },
+    voltage: '5V',
+    iconName: 'Tv',
+    defaultProperties: {
+      i2cAddress: '0x27',
+      line1: 'IoT Lab Ready',
+      line2: 'Sensors: Active',
+      backlight: 'Blue',
+    },
+    pins: [
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'left', description: 'Ground' },
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'left', description: '5V DC Power' },
+      { id: 'pin-sda', name: 'SDA', type: 'comm_i2c', voltage: '5V', direction: 'bidirectional', position: 'left', description: 'I2C Serial Data' },
+      { id: 'pin-scl', name: 'SCL', type: 'comm_i2c', voltage: '5V', direction: 'input', position: 'left', description: 'I2C Serial Clock' },
+    ],
+  },
+
+  'oled-096-i2c': {
+    typeId: 'oled-096-i2c',
+    name: 'OLED 0.96" (SSD1306)',
+    category: 'display',
+    nodeType: 'displayNode',
+    description: '128x64 pixel graphic monochrome OLED display with integrated SSD1306 I2C controller.',
+    dimensions: { width: 220, height: 175 },
+    voltage: '3.3V - 5V',
+    iconName: 'Monitor',
+    defaultProperties: {
+      i2cAddress: '0x3C',
+      resolution: '128 x 64 px',
+      headerText: 'IoT Lab Station',
+      bodyText: 'ESP32 Telemetry',
+      theme: 'Blue / Yellow',
+    },
+    pins: [
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'top', description: 'Ground' },
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'top', description: '3.3V - 5V Power' },
+      { id: 'pin-scl', name: 'SCL', type: 'comm_i2c', voltage: '3.3V', direction: 'input', position: 'top', description: 'I2C Serial Clock' },
+      { id: 'pin-sda', name: 'SDA', type: 'comm_i2c', voltage: '3.3V', direction: 'bidirectional', position: 'top', description: 'I2C Serial Data' },
+    ],
+  },
+
+  // ==========================================
+  // COMMUNICATION MODULES
+  // ==========================================
+  'lora-sx1278': {
+    typeId: 'lora-sx1278',
+    name: 'LoRa SX1278 (433MHz Ra-02)',
+    category: 'communication',
+    nodeType: 'genericNode',
+    description: 'Long-range spread spectrum RF transceiver operating at 433MHz with SPI bus interface.',
+    dimensions: { width: 200, height: 210 },
+    voltage: '3.3V',
+    iconName: 'Radio',
+    defaultProperties: {
+      frequency: '433 MHz',
+      bandwidth: '125 kHz',
+      spreadingFactor: 'SF7',
+      txPower: '17 dBm',
+    },
+    pins: [
+      { id: 'pin-vcc', name: '3V3', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'left', description: '3.3V Power' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'left', description: 'Ground' },
+      { id: 'pin-nss', name: 'NSS', type: 'comm_spi', voltage: '3.3V', direction: 'input', position: 'left', description: 'SPI Chip Select' },
+      { id: 'pin-dio0', name: 'DIO0', type: 'gpio_digital', voltage: '3.3V', direction: 'output', position: 'left', description: 'Packet Rx/Tx Interrupt' },
+      { id: 'pin-sck', name: 'SCK', type: 'comm_spi', voltage: '3.3V', direction: 'input', position: 'right', description: 'SPI Clock' },
+      { id: 'pin-miso', name: 'MISO', type: 'comm_spi', voltage: '3.3V', direction: 'output', position: 'right', description: 'SPI MISO' },
+      { id: 'pin-mosi', name: 'MOSI', type: 'comm_spi', voltage: '3.3V', direction: 'input', position: 'right', description: 'SPI MOSI' },
+      { id: 'pin-rst', name: 'RST', type: 'gpio_digital', voltage: '3.3V', direction: 'input', position: 'right', description: 'Reset' },
+    ],
+  },
+
+  'gps-neo6m': {
+    typeId: 'gps-neo6m',
+    name: 'GPS NEO-6M Receiver',
+    category: 'communication',
+    nodeType: 'genericNode',
+    description: 'High-sensitivity GPS receiver module with ceramic antenna and standard NMEA UART output.',
+    dimensions: { width: 180, height: 160 },
+    voltage: '3.3V - 5V',
+    iconName: 'Compass',
+    defaultProperties: {
+      baudRate: '9600 bps',
+      protocol: 'NMEA 0183',
+      updateRate: '1 Hz',
+    },
+    pins: [
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '3.3V', direction: 'input', position: 'bottom', description: '3.3V - 5V Power' },
+      { id: 'pin-rx', name: 'RX', type: 'comm_uart', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'Serial Receive (Configuration)' },
+      { id: 'pin-tx', name: 'TX', type: 'comm_uart', voltage: '3.3V', direction: 'output', position: 'bottom', description: 'Serial Transmit (NMEA Sentences)' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+    ],
+  },
+
+  'bluetooth-hc05': {
+    typeId: 'bluetooth-hc05',
+    name: 'Bluetooth Module HC-05',
+    category: 'communication',
+    nodeType: 'genericNode',
+    description: 'Classic Bluetooth 2.0+EDR SPP serial adapter with AT command firmware mode.',
+    dimensions: { width: 180, height: 180 },
+    voltage: '3.3V - 5V',
+    iconName: 'Bluetooth',
+    defaultProperties: {
+      baudRate: '38400 bps',
+      pairingCode: '1234',
+      role: 'Slave',
+    },
+    pins: [
+      { id: 'pin-en', name: 'EN', type: 'gpio_digital', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'AT Mode Enable' },
+      { id: 'pin-vcc', name: 'VCC', type: 'power_vcc', voltage: '5V', direction: 'input', position: 'bottom', description: '5V Power Supply' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Ground' },
+      { id: 'pin-tx', name: 'TXD', type: 'comm_uart', voltage: '3.3V', direction: 'output', position: 'bottom', description: 'Serial Output' },
+      { id: 'pin-rx', name: 'RXD', type: 'comm_uart', voltage: '3.3V', direction: 'input', position: 'bottom', description: 'Serial Input (3.3V Level)' },
+      { id: 'pin-state', name: 'STATE', type: 'gpio_digital', voltage: '3.3V', direction: 'output', position: 'bottom', description: 'Connection Status LED' },
+    ],
+  },
+
+  // ==========================================
+  // PASSIVE & POWER
+  // ==========================================
+  'resistor': {
+    typeId: 'resistor',
+    name: 'Resistor (Axial)',
+    category: 'passive',
+    nodeType: 'genericNode',
+    description: 'Through-hole metal film current-limiting / pull-up resistor.',
+    dimensions: { width: 140, height: 120 },
+    voltage: 'VARIABLE',
+    iconName: 'Minus',
+    defaultProperties: {
+      resistance: '10k Ω',
+      powerRating: '0.25 W',
+      tolerance: '±1%',
+    },
+    pins: [
+      { id: 'pin-1', name: 'Terminal 1', type: 'passive', voltage: 'VARIABLE', direction: 'bidirectional', position: 'left', description: 'Resistor Terminal 1' },
+      { id: 'pin-2', name: 'Terminal 2', type: 'passive', voltage: 'VARIABLE', direction: 'bidirectional', position: 'right', description: 'Resistor Terminal 2' },
+    ],
+  },
+
+  'breadboard-half': {
+    typeId: 'breadboard-half',
+    name: 'Breadboard (400 Tie-Point)',
+    category: 'passive',
+    nodeType: 'genericNode',
+    description: 'Solderless prototyping breadboard with two dual power rails and 30 column tie-point groups.',
+    dimensions: { width: 320, height: 180 },
+    voltage: 'VARIABLE',
+    iconName: 'Grid',
+    defaultProperties: {
+      tiePoints: 400,
+      pitch: '2.54 mm',
+      powerRails: '2 Dual (+ and -)',
+    },
+    pins: [
+      { id: 'pin-rail-plus-top', name: 'Rail (+)', type: 'power_vcc', voltage: 'VARIABLE', direction: 'bidirectional', position: 'top', description: 'Top Positive Bus' },
+      { id: 'pin-rail-gnd-top', name: 'Rail (-)', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'top', description: 'Top Ground Bus' },
+      { id: 'pin-rail-plus-bot', name: 'Rail (+)', type: 'power_vcc', voltage: 'VARIABLE', direction: 'bidirectional', position: 'bottom', description: 'Bottom Positive Bus' },
+      { id: 'pin-rail-gnd-bot', name: 'Rail (-)', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'bottom', description: 'Bottom Ground Bus' },
+    ],
+  },
+
+  'power-module-mb102': {
+    typeId: 'power-module-mb102',
+    name: 'MB102 Breadboard Power Supply',
+    category: 'power',
+    nodeType: 'genericNode',
+    description: 'Plug-in breadboard power module with dual independent 3.3V / 5V jumper-selectable rails.',
+    dimensions: { width: 200, height: 160 },
+    voltage: '3.3V / 5V',
+    iconName: 'BatteryCharging',
+    defaultProperties: {
+      inputVoltage: '6.5V - 12V DC (Barrel / USB)',
+      outputRail1: '3.3V / 5V Selectable',
+      outputRail2: '3.3V / 5V Selectable',
+      maxCurrent: '700 mA',
+    },
+    pins: [
+      { id: 'pin-vin', name: 'DC IN', type: 'power_vcc', voltage: '12V', direction: 'input', position: 'left', description: 'DC Barrel Jack Input (7-12V)' },
+      { id: 'pin-out-5v', name: '5V OUT', type: 'power_vcc', voltage: '5V', direction: 'output', position: 'right', description: '5V Regulated Rail' },
+      { id: 'pin-out-3v3', name: '3V3 OUT', type: 'power_vcc', voltage: '3.3V', direction: 'output', position: 'right', description: '3.3V Regulated Rail' },
+      { id: 'pin-gnd', name: 'GND', type: 'power_gnd', voltage: 'GND', direction: 'bidirectional', position: 'right', description: 'Common Ground' },
+    ],
+  },
+};
+
+export const CATEGORY_LABELS: Record<string, { label: string; count: number }> = {
+  microcontroller: { label: 'Microcontrollers', count: 3 },
+  sensor: { label: 'Sensors', count: 7 },
+  actuator: { label: 'Actuators', count: 4 },
+  display: { label: 'Displays', count: 2 },
+  communication: { label: 'Communication Modules', count: 3 },
+  passive: { label: 'Passive Components', count: 2 },
+  power: { label: 'Power Supply', count: 1 },
+};
